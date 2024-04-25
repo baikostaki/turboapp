@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+from django.conf.global_settings import AUTH_USER_MODEL
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,13 +32,16 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    "" "django.contrib.admin",
+INSTALLED_APPS: list[str] = [
+    "expense_tracker.apps.ExpenseTrackerConfig",
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_bootstrap5",
+    "cuser",
 ]
 
 MIDDLEWARE = [
@@ -51,7 +56,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "turboapp.urls"
 
-TEMPLATES = [
+TEMPLATES = [ #type: ignore
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [],
@@ -78,10 +83,10 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "turboapp",
         "USER": "django",
-        "PASSWORD": "unchained",
-    },
-    "OPTIONS": {
-        "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        "PASSWORD": "unchained", #arlekino-root pass
+        # },
+        # "OPTIONS": {
+        #     "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
     },
 }
 
@@ -126,3 +131,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "expense_tracker.User"
