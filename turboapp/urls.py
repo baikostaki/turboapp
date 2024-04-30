@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 
 
-from cuser.forms import AuthenticationForm
+from cuser.forms import AuthenticationForm # type: ignore
 from django.contrib.auth.views import LoginView
 
 
