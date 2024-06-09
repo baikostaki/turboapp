@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.conf.global_settings import AUTH_USER_MODEL  # type: ignore
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,13 +31,21 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    "" "django.contrib.admin",
+INSTALLED_APPS: list[str] = [
+    # django
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # aditional 3rd party
+    "django_bootstrap5",
+    "django_htmx",
+    # my apps
+    "cuser",
+    "turboapp_users",
+    "expense_tracker",
 ]
 
 MIDDLEWARE = [
@@ -47,11 +56,13 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # custom
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = "turboapp.urls"
 
-TEMPLATES = [
+TEMPLATES = [  # type: ignore
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [],
@@ -78,10 +89,10 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "turboapp",
         "USER": "django",
-        "PASSWORD": "unchained",
-    },
-    "OPTIONS": {
-        "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        "PASSWORD": "unchained",  # arlekino-root pass
+        # },
+        # "OPTIONS": {
+        #     "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
     },
 }
 
@@ -122,7 +133,20 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+#     "/var/www/static/",
+# ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# AUTH_USER_MODEL = "custom_user.EmailUser"  # type: ignore
+AUTH_USER_MODEL = "turboapp_users.TurboAppUser"  # type: ignore
+
+CUSER = {
+    "app_verbose_name": "User management CUser",
+    "register_proxy_auth_group_model": False,
+}
