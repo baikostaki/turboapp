@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from django.conf.global_settings import AUTH_USER_MODEL  # type: ignore
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,7 +66,12 @@ ROOT_URLCONF = "turboapp.urls"
 TEMPLATES = [  # type: ignore
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            # os.path.join(BASE_DIR, "project_templates"),
+            os.path.join(BASE_DIR, "turboapp/templates"),
+            # os.path.join(BASE_DIR, "expense_tracker/templates"),
+            # os.path.join(BASE_DIR, "turbpapp_users/templates"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -145,8 +151,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # AUTH_USER_MODEL = "custom_user.EmailUser"  # type: ignore
 AUTH_USER_MODEL = "turboapp_users.TurboAppUser"  # type: ignore
-
-CUSER = {
-    "app_verbose_name": "User management CUser",
-    "register_proxy_auth_group_model": False,
-}
