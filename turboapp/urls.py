@@ -26,9 +26,10 @@ from . import views
 urlpatterns = [
     path("tracker/", include("expense_tracker.urls")),
     # re_path(r"^accounts/", include("django.contrib.auth.urls")),
+    path("users/", view=include("turboapp_users.urls")),
     path("admin/", admin.site.urls),
-    path("register/", user_views.RegisterView.as_view(), name="register"),
-    path("login/", user_views.LoginView.as_view(), name="login"),
+    # path("register/", user_views.RegisterView.as_view(), name="register"),
+    # path("login/", user_views.LoginView.as_view(), name="login"),
     path("", views.HomeView.as_view(), name="project_home"),
 ]
 

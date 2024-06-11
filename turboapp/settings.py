@@ -67,10 +67,10 @@ TEMPLATES = [  # type: ignore
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            # os.path.join(BASE_DIR, "project_templates"),
-            os.path.join(BASE_DIR, "turboapp/templates"),
+            os.path.join(BASE_DIR, "turboapp", "templates"),
+            os.path.join(BASE_DIR, "turboapp_users", "templates"),
             # os.path.join(BASE_DIR, "expense_tracker/templates"),
-            # os.path.join(BASE_DIR, "turbpapp_users/templates"),
+            # os.path.join(BASE_DIR, "turboapp_users/"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -137,12 +137,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-#     "/var/www/static/",
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "turboapp", "static"),
+    # "/var/www/static/",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

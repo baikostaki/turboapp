@@ -1,7 +1,7 @@
 _secrets.txt
-static/css/booststrap/
-static/js/booststrap/
-
+turboapp/static/css/bootstrap/
+turboapp/static/icons/
+turboapp/static/js/bootstrap/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -164,6 +164,3 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-expense_tracker/static/css/bootstrap/
-expense_tracker/static/js/bootstrap/
-expense_tracker/static/js/htmx/

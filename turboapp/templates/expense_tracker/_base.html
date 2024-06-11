@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block title %}
+      <title>Turboapp - Expense Tracker</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+     <!-- CSS -->
+     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" />
+     <link rel="stylesheet" href="{% static 'icons/font/bootstrap-icons.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/site/site.css' %}">
+ 
+     <!-- JS -->
+     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+    {% block navigation %}
+      {% include 'expense_tracker/partials/_nav.html' %}
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block footer %}
+      {% include 'expense_tracker/partials/_footer.html' %}
+    {% endblock %}
+  </body>
+</html>
