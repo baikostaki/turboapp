@@ -3,7 +3,6 @@ from cuser.admin import UserAdmin  # type: ignore
 from .models import TurboappUser, TurboappGroup
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.models import Group as DefaultDjangoGroup
-from cuser.models import Group  # type: ignore
 
 
 class TurboAppUserAdmin(UserAdmin):

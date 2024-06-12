@@ -41,7 +41,6 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # aditional 3rd party
-    "django_bootstrap5",
     "django_htmx",
     # my apps
     "cuser",
@@ -149,5 +148,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# AUTH_USER_MODEL = "custom_user.EmailUser"  # type: ignore
 AUTH_USER_MODEL = "turboapp_users.TurboAppUser"  # type: ignore

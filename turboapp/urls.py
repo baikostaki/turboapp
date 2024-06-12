@@ -17,20 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include, re_path
-from turboapp_users import views as user_views
 from . import views
-
-# from django.contrib.auth.views import LoginView
 
 
 urlpatterns = [
+    path("", views.HomeView.as_view(), name="project_home"),
     path("tracker/", include("expense_tracker.urls")),
-    # re_path(r"^accounts/", include("django.contrib.auth.urls")),
     path("users/", view=include("turboapp_users.urls")),
     path("admin/", admin.site.urls),
-    # path("register/", user_views.RegisterView.as_view(), name="register"),
-    # path("login/", user_views.LoginView.as_view(), name="login"),
-    path("", views.HomeView.as_view(), name="project_home"),
 ]
 
 # urlpatterns += [
