@@ -1,4 +1,6 @@
+from audioop import reverse
 from django.urls import reverse_lazy
+from django.views.generic import FormView, RedirectView
 from django.views.generic import FormView, RedirectView
 from typing import Any
 from django.contrib.auth import login, authenticate, logout
@@ -16,7 +18,7 @@ class LoginView(FormView):
         password = form.cleaned_data["password"]
         user = authenticate(email=email, password=password)
         if user is not None:
-            login(request=self.request, user) # type: ignore
+            login(self.request, user)  # type: ignore
             return super().form_valid(form)
         else:
             form.add_error(None, "Invalid email and/or password.")
@@ -46,6 +48,14 @@ class RegisterView(FormView):
         context = super().get_context_data(**kwargs)
         ...
         return context
+
+
+class LogoutView(RedirectView):
+    url = reverse_lazy("project_home")
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return super().get(request, *args, **kwargs)
 
 
 class LogoutView(RedirectView):
