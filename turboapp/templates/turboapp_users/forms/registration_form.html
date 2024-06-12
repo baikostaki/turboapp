@@ -1,24 +1,30 @@
 {% extends 'turboapp_users/_base.html' %}
 {% block content %}
-  <form action="/register" method="post">
+  <form action="/users/register/" method="post">
     <div class="row justify-content-center">
       <div class="col-md-3">
         <h2 class="text-center mt-5">Register</h2>
         {% csrf_token %}
+        {{ form.non_field_errors }}
+
         <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" id="username" placeholder="Please enter a valid email address" />
+          <label for="{{form.email.id_for_label}}" class="form-label">Email</label>
+          {{ form.email }}
+          {% comment %} <input type="text" class="form-control" id="username" placeholder="Please enter a valid email address" /> {% endcomment %}
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Please enter your password" />
+          <label for="{{form.password.id_for_label}}" class="form-label">Password</label>
+          {{ form.password }}
+          {% comment %} <input type="password" class="form-control" id="password" placeholder="Please enter your password" /> {% endcomment %}
         </div>
         <div class="mb-3">
-          <label for="repeat_password" class="form-label">Repeat password</label>
-          <input type="password" class="form-control" id="repeat_password" placeholder="Repeat password" />
+          <label for="{{form.repeat_password.id_for_label}}" class="form-label">Repeat password</label>
+          {% comment %} <input type="password" class="form-control" id="repeat_password" placeholder="Repeat password" /> {% endcomment %}
+          {{ form.repeat_password }}
         </div>
         <div class="mb-3">
-          <input type="checkbox" class="form-check-input" id="terms_agree" />
+          {{ form.terms_agree }}
+          {% comment %} <input type="checkbox" class="form-check-input" id="terms_agree" /> {% endcomment %}
           <label for="terms_agree" class="form-check-label">
             I have agreed with
             <a href="#">Terms and agreements</a>
