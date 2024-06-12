@@ -3,24 +3,14 @@ from django.contrib.auth import get_user_model
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label="Please enter a valid email address")
-    password = forms.CharField(
-        label="Please enter a secure password - 1 letter, 1 special symbol, min 8 characters.",
-        max_length=100,
-        widget=forms.PasswordInput(attrs={"class": "form-control"}),  # type: ignore
-    )
-
-    repeat_password = forms.CharField(
-        label="Please enter your password again - 1 letter, 1 special symbol, min 8 characters.",
-        max_length=100,
-        widget=forms.PasswordInput(attrs={"class": "form-control"}),  # type: ignore
-    )
-
-
-class RegistrationForm(forms.ModelForm):
+    # email = forms.EmailField(label="Please enter a valid email address")
     email = forms.EmailField(
         widget=forms.EmailInput(
-            attrs={"class": "form-control", "autocomplete": "email"}
+            attrs={
+                "class": "form-control",
+                "autocomplete": "email",
+                "placeholder": "Please enter your email",
+            }
         )
     )
     password = forms.CharField(
@@ -28,6 +18,28 @@ class RegistrationForm(forms.ModelForm):
             attrs={
                 "class": "form-control",
                 "autocomplete": "current-password",
+                "placeholder": "Please enter your password",
+            }
+        )
+    )
+
+
+class RegistrationForm(forms.ModelForm):
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "class": "form-control",
+                "autocomplete": "email",
+                "placeholder": "Please enter a valid email address",
+            },
+        )
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "autocomplete": "current-password",
+                "placeholder": "Please enter your password",
             }
         )
     )
@@ -37,6 +49,7 @@ class RegistrationForm(forms.ModelForm):
                 "class": "form-control",
                 "name": "repeat_password",
                 "autocomplete": "current-password",
+                "placeholder": "Please re-enter your password",
             }
         )
     )

@@ -7,10 +7,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'icons/font/bootstrap-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site/site.css' %}">
+      <!-- JS -->
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
   </head>
+
   <body>
     {% block navigation %}
       {% include 'turboapp/partials/_nav.html' %}

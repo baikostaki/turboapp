@@ -1,30 +1,39 @@
-  <div class="container mx-0">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-4">Turbo app - Expense tracker </span>
-      </a>
-      <ul class="nav nav-pills">
+TODO: substitute navbar with one of those: https://getbootstrap.com/docs/5.3/examples/navbars/
+TODO: maybe create one nav template with IF statements according to App?
+<div class="container mx-0">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap"></use>
+      </svg>
+      <span class="fs-4">Turbo app - Expense tracker</span>
+    </a>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a href="/tracker" class="nav-link {% if request.path == '/tracker/' %}active{% endif %}" aria-current="page">Expense Tracker Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link {% if request.path == '/features' %}active{% endif %}">Features</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link {% if request.path == '/pricing' %}active{% endif %}">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link {% if request.path == '/faqs' %}active{% endif %}">FAQs</a>
+      </li>
+
+      {% if user.is_authenticated %}
         <li class="nav-item">
-          <a href="/tracker" class="nav-link {% if request.path == '/tracker/' %}active{% endif %}" aria-current="page">Expense Tracker Home</a>
+          <a href="/users/logout" class="nav-link">Logout</a>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link {% if request.path == '/features' %}active{% endif %}">Features</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link {% if request.path == '/pricing' %}active{% endif %}">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link {% if request.path == '/faqs' %}active{% endif %}">FAQs</a>
-        </li>
+      {% else %}
         <li class="nav-item">
           <a href="/users/login" class="nav-link {% if request.path == '/login/' %}active{% endif %}">Login</a>
         </li>
         <li class="nav-item">
           <a href="/users/register" class="nav-link {% if request.path == '/register/' %}active{% endif %}">Sign up</a>
         </li>
-      </ul>
-    </header>
-  </div>
+      {% endif %}
+    </ul>
+  </header>
+</div>
