@@ -11,5 +11,4 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context: Dict[str, Any] = super().get_context_data(**kwargs)
-        context["user"] = self.request.user  # TODO: Fиgure out why it's unnecessary
         return context

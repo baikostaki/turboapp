@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path("", views.HomeView.as_view(), name="expense_tracker_home"),
+    path("add-expense/", views.CreateExpenseView.as_view(), name="add_expense"),
 ]

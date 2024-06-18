@@ -1,0 +1,24 @@
+{% extends 'expense_tracker/_base.html' %}
+
+{% block title %}
+  <title>Add Expense</title>
+{% endblock %}
+
+{% block content %}
+  <body>
+    <h1>Add Expense</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <!-- New Category Input -->
+      {% comment %} <div class="form-group">
+        <label for="{{ form.new_category.id_for_label }}">New Category:</label>
+        {{ form.new_category }}
+      </div> {% endcomment %}
+      <button type="submit" name="create_new_category" value="create" class="btn btn-success">Create New Category</button>
+
+      <button type="submit" class="btn btn-primary">Save Expense</button>
+    </form>
+  </body>
+{% endblock %}
